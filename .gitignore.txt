@@ -1,0 +1,4 @@
+.vscode/
+Bank/
+bin/
+obj/
