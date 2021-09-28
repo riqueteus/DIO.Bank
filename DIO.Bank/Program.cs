@@ -15,10 +15,10 @@ namespace DIO.Bank
                switch (opcaoUsuario)
                {
                    case "1":
-                      //ListarContas();
+                      ListarContas();
                       break;
                    case "2":
-                      //NovaConta();
+                      NovaConta();
                       break;
                     case "3":
                       //Tranferencia();
@@ -42,6 +42,52 @@ namespace DIO.Bank
 
            Console.WriteLine("Obrigado por utilizar nossos serviços.");
            Console.ReadLine();
+        }
+
+        private static void ListarContas()
+        {
+            Console.WriteLine("Listar Contas");
+
+            if(listContas.Count == 0)
+            {
+                Console.WriteLine("Nenhuma conta cadastrada.");
+                return;
+            }
+            for (int i = 0; i <listContas.Count; i++)
+            {
+                Conta conta = listContas[i];
+                Console.Write("#{0} - ", i);
+                Console.WriteLine(conta);
+
+            }
+        }
+
+        private static void NovaConta()
+        {
+            Console.WriteLine("Inserir nova conta");
+            Console.Write("DIgite 1 para Conta Física ou 2 para Jurídica: ");
+            int entradaTipoConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o seu Nome: ");
+            string entradaNome = Console.ReadLine();
+
+            Console.Write("Digite a sua cidade: ");
+            string entradaCidade = Console.ReadLine();
+
+            Console.Write("Digite seu saldo inicial: ");
+            double entradaSaldo = double.Parse(Console.ReadLine());
+
+            Console.Write("Digite o crédito: ");
+            double entradaCredito = double.Parse(Console.ReadLine());
+
+            Conta novaConta = new Conta(tipoConta: (TipoConta) entradaTipoConta,
+                                        saldo: entradaSaldo,
+                                        credito: entradaCredito,
+                                        nome: entradaNome,
+                                        cidade: entradaCidade);
+                
+            listContas.Add(novaConta);
+
         }
 
         private static string ObterOpçaoUsuario()
