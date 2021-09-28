@@ -21,13 +21,13 @@ namespace DIO.Bank
                       NovaConta();
                       break;
                     case "3":
-                      //Tranferencia();
+                      Tranferencia();
                       break;
                     case "4":
-                      //Saque();
+                      Saque();
                       break;
                     case "5":
-                      //Deposito();
+                      Deposito();
                       break;
                     case "C":
                       Console.Clear();
@@ -42,6 +42,42 @@ namespace DIO.Bank
 
            Console.WriteLine("Obrigado por utilizar nossos serviços.");
            Console.ReadLine();
+        }
+
+        private static void Tranferencia()
+        {
+            Console.Write("Digite o número da conta de origem: ");
+            int indiceContaOrigem = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o número da conta de destino: ");
+            int indiceContaDestino = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser transferido: ");
+            double valorTransferencia = double.Parse(Console.ReadLine());
+
+            listContas[indiceContaOrigem].Transferir(valorTransferencia, listContas[indiceContaDestino]);
+        }
+
+        private static void Deposito()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser depositado: ");
+            double valorDeposito = double.Parse(Console.ReadLine());
+
+            listContas[indiceConta].Depositar(valorDeposito);
+        }
+
+        private static void Saque()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser sacado: ");
+            double valorDeposito = double.Parse(Console.ReadLine());
+
+            listContas[indiceConta].Sacar(valorDeposito);
         }
 
         private static void ListarContas()
